@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Daily Covid-19 Tracker</title>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<style>
+		h1 {
+			text-align: center;
+		}
+
+		p {
+			text-align: center;
+		}
+
+		div {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<div class="container">
+
+	<div class = "jumbotron" style="background-color:rgb(109, 168, 87)">
+	
+		<h1>
+		Daily Reported Covid-19 Cases
+		</h1>
+		<p>Application shows daily reported cases of Covid-19</p>
+	</div>
+
+
+		<div class="jumbotron" style="background-color:rgb(0, 255, 64)">
+			<h3 class="lead">Total Number of Covid-19 cases today.</h3>
+			<h1 class="display-4" th:text="${totalNumberOfCovidCases}"></h1>
+			<hr class="my-4">
+			<h3 class="lead">Cases reported since yesterday is </h3>
+			<h1 class="display-4" th:text="${totalNumberOfNewCases}"></h1>
+		</div>
+
+		<table class="table">
+			<tr>
+				<th>State</th>
+				<th>Country</th>
+				<th>Current Cases</th>
+				<th>Rise in 1 Day</th>
+			</tr>
+			<tr th:each="locationData : ${locationsData}">
+				<td th:text="${locationData.state}"></td>
+				<td th:text="${locationData.country}"></td>
+				<td th:text="${locationData.updatedCaseCount}">0</td>
+				<td th:text="${locationData.differenceFromPreviousDay}">0</td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+</html>
